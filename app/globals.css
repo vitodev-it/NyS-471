@@ -483,6 +483,13 @@ header.scrolled {
 }
 
 /* ===== HERO ===== */
+
+/* Desktop default — overridden at smaller breakpoints */
+.hero-section-override {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
 .hero {
   position: relative;
   display: grid;
@@ -499,11 +506,11 @@ header.scrolled {
 }
 
 .hero-text h1 {
-  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
 }
 
 .hero-text .lead {
-  font-size: 1.15rem;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
   margin-bottom: 2.5rem;
 }
 
@@ -1852,7 +1859,7 @@ footer {
 /* ===== TRUST SIGNALS ===== */
 .trust-row {
   display: flex;
-  gap: 2rem;
+  gap: 1rem 2rem;
   flex-wrap: wrap;
   align-items: center;
   margin-top: 2.5rem;
@@ -1862,6 +1869,7 @@ footer {
   font-size: 0.85rem;
   color: var(--text-muted);
   font-weight: 500;
+  flex-shrink: 0;
 }
 
 .trust-badge {
@@ -1872,15 +1880,46 @@ footer {
 }
 
 /* ===== RESPONSIVE ===== */
+
+/* ── Tablet landscape (≤1024px) ── */
 @media (max-width: 1024px) {
   .hero {
     grid-template-columns: 1fr;
     min-height: auto;
-    padding: 4rem 0 2rem;
+    gap: 2.5rem;
   }
 
+  /* Show hero-visual as a compact horizontal row on tablet */
   .hero-visual {
-    display: none;
+    min-height: auto;
+  }
+
+  .hero-card-stack {
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 100%;
+    gap: 1rem;
+  }
+
+  .hero-stat-card {
+    flex: 1 1 calc(33% - 1rem);
+    min-width: 180px;
+  }
+
+  /* Reset the staggered indent on tablet row layout */
+  .hero-stat-card:nth-child(2) {
+    margin-left: 0;
+  }
+
+  /* Shrink orbs on tablet */
+  .hero-orb-1 {
+    width: 260px;
+    height: 260px;
+  }
+
+  .hero-orb-2 {
+    width: 180px;
+    height: 180px;
   }
 
   .stats-row {
@@ -1896,7 +1935,12 @@ footer {
   }
 }
 
+/* ── Tablet portrait (≤768px) ── */
 @media (max-width: 768px) {
+  .section {
+    padding: 4.5rem 0;
+  }
+
   .nav-links {
     display: none;
     position: absolute;
@@ -1933,6 +1977,23 @@ footer {
     position: sticky;
   }
 
+  /* Hero: single column, tighter spacing */
+  .hero {
+    gap: 2rem;
+  }
+
+  /* On tablet portrait, show only 2 stat cards in a row */
+  .hero-stat-card {
+    flex: 1 1 calc(50% - 0.5rem);
+    min-width: 0;
+  }
+
+  /* Hero section padding adjustment */
+  .hero-section-override {
+    padding-top: 4rem !important;
+    padding-bottom: 3rem !important;
+  }
+
   .mission-vision-grid {
     grid-template-columns: 1fr;
   }
@@ -1961,24 +2022,95 @@ footer {
     padding: 3rem 1.5rem;
     border-radius: var(--radius-lg);
   }
+
+  /* Trust row: tighter gap so badges don't overflow */
+  .trust-row {
+    gap: 0.75rem 1.25rem;
+    margin-top: 2rem;
+  }
+
+  /* Buttons: center-align on small screens */
+  .btn-group {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .btn-lg {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+  }
 }
 
+/* ── Mobile (≤480px) ── */
 @media (max-width: 480px) {
   .section {
-    padding: 4rem 0;
+    padding: 3.5rem 0;
   }
 
   h1 {
     font-size: 2.2rem;
   }
 
-  .stats-row {
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+  /* Hero visual: hide orbs on very small screens, keep cards */
+  .hero-orb {
+    display: none;
+  }
+
+  .hero-card-stack {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .hero-stat-card {
+    flex: 1 1 100%;
+    padding: 1rem 1.25rem;
+  }
+
+  /* Reset any staggered offsets */
+  .hero-stat-card:nth-child(2) {
+    margin-left: 0;
+  }
+
+  .hero-visual {
+    min-height: auto;
   }
 
   .hero-text h1 {
-    font-size: 2.4rem;
+    font-size: clamp(2rem, 8vw, 2.6rem);
+  }
+
+  .hero-text .lead {
+    font-size: 1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  /* Trust row: wrap into single column on very small phones */
+  .trust-row {
+    gap: 0.5rem 1rem;
+    margin-top: 1.5rem;
+  }
+
+  /* Full-width buttons on tiny screens */
+  .btn-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-group .btn,
+  .btn-group .btn-outline {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .btn-lg {
+    padding: 0.85rem 1.5rem;
+    font-size: 0.975rem;
+  }
+
+  .stats-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
   }
 
   .fab-container {
@@ -1989,5 +2121,9 @@ footer {
   .chatbot-trigger {
     bottom: 1.5rem;
     left: 1.5rem;
+  }
+
+  .cta-band {
+    padding: 2.5rem 1.25rem;
   }
 }

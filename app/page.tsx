@@ -226,7 +226,7 @@ export default function HomePage() {
   return (
     <>
       {/* ===== HERO ===== */}
-      <section className="section" style={{ paddingTop: '6rem', paddingBottom: '6rem' }}>
+      <section className="section hero-section-override">
         <div className="container hero">
           <div className="hero-text">
             <div className="label-tag">Brunei&apos;s #1 Digital Partner</div>
