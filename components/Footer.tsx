@@ -92,11 +92,30 @@ export default function Footer() {
             <a href="#">BSB, Brunei Darussalam</a>
             <Link href="/contact">Send a Message</Link>
           </div>
+
+          <div className="footer-col">
+            <h4>Legal</h4>
+            <Link href="/privacy-policy">Privacy Policy</Link>
+            <Link href="/terms-of-service">Terms of Service</Link>
+          </div>
         </div>
 
         <div className="footer-bottom">
           <p>© 2025 YNot Solutions · Aligned with Wawasan Brunei 2035</p>
-          <p>Built in Brunei 🇧🇳</p>
+          <div className="footer-bottom-right">
+            <p>Built in Brunei 🇧🇳</p>
+            <p className="footer-credit">
+              Supported by{' '}
+              <a
+                href="https://minorseventh-studio.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-credit-link"
+              >
+                Mb7 Studio
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
