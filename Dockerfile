@@ -21,6 +21,7 @@ COPY . .
 # Disable Next.js telemetry during build
 ENV NEXT_TELEMETRY_DISABLED=1
 
+ENV PATH="/app/node_modules/.bin:$PATH"
 RUN npm run build
 
 # ─── Stage 3: Production image ────────────────────────────────────────────────
