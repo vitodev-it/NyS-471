@@ -2082,10 +2082,46 @@ footer {
 
   /* Hero: single column, tighter spacing */
   .hero {
+    grid-template-columns: 1fr;
     gap: 2rem;
   }
 
-  /* On tablet portrait, show only 2 stat cards in a row */
+  .hero-visual {
+    display: none;
+  }
+
+  /* Services: single column on mobile */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .service-card {
+    padding: 1.5rem;
+  }
+
+  /* Testimonials: single column */
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Hero: center text on mobile */
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-text .label-tag {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-text .btn-group {
+    justify-content: center;
+  }
+
+  .trust-row {
+    justify-content: center;
+  }
   .hero-stat-card {
     flex: 1 1 calc(50% - 0.5rem);
     min-width: 0;
