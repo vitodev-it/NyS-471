@@ -1,5 +1,5 @@
 services:
-  # ─── Next.js App ────────────────────────────────────────────────────────────
+  # ─── Next.js App (YNot Solutions) ──────────────────────────────────────────
   app:
     build:
       context: .
@@ -10,34 +10,10 @@ services:
       - NODE_ENV=production
       - PORT=4001
     expose:
-      - "4001"   # Only expose internally; Caddy handles public traffic
+      - "4001"
     networks:
       - web
-
-  # ─── Caddy Reverse Proxy ─────────────────────────────────────────────────────
-  caddy:
-    image: caddy:2-alpine
-    container_name: ynot-caddy
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"   # HTTP/3 (QUIC)
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - caddy_data:/data
-      - caddy_config:/config
-    networks:
-      - web
-    depends_on:
-      - app
 
 networks:
   web:
-    driver: bridge
-
-volumes:
-  caddy_data:
-    driver: local
-  caddy_config:
-    driver: local
+    external: true

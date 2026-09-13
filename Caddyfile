@@ -1,10 +1,10 @@
 # ────────────────────────────────────────────────────────────────────────────────
 # Caddyfile — Caddy v2 config for ynot-app
-# Replace yourdomain.com with your actual domain before deploying.
+# ynotsolutions.cc — production domain configured.
 # Caddy will automatically obtain & renew SSL certificates via Let's Encrypt.
 # ────────────────────────────────────────────────────────────────────────────────
 
-yourdomain.com {
+ynotsolutions.cc {
     # Enable HTTP/2 Push and compression
     encode zstd gzip
 
@@ -46,6 +46,6 @@ yourdomain.com {
 }
 
 # Optional: redirect www → non-www
-# www.yourdomain.com {
-#     redir https://yourdomain.com{uri} permanent
+# www.ynotsolutions.cc {
+#     redir https://ynotsolutions.cc{uri} permanent
 # }
