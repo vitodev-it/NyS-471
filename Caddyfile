@@ -15,3 +15,7 @@ ynotsolutions.cc {
         }
     }
 }
+
+www.ynotsolutions.cc {
+    redir https://ynotsolutions.cc{uri} permanent
+}
