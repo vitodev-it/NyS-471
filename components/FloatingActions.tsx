@@ -88,6 +88,22 @@ const FAQS = [
     triggers: ['startup', 'incubat', 'new business', 'launch'],
     answer: 'YNot Labs supports Brunei startups with mentorship, technical guidance, networking, and connections to funding. Reach out to join!',
   },
+  {
+    triggers: ['thank', 'thanks', 'appreciate'],
+    answer: "You're welcome! If you have more questions, feel free to ask. We're here to help!",
+  },
+  {
+    triggers: ['bye', 'goodbye', 'see you', 'later'],
+    answer: "Thank you for chatting with us! If you need anything else, don't hesitate to reach out. Have a great day!",
+  },
+  {
+    triggers: ['team', 'who', 'founder', 'about company'],
+    answer: 'YNot Solutions is a Brunei-based tech company focused on digital transformation. We combine Silicon Valley innovation with local expertise to deliver AI, IoT, and web solutions for businesses.',
+  },
+  {
+    triggers: ['portfolio', 'project', 'client', 'work'],
+    answer: "We've worked with various clients across government, corporate, and startup sectors. Visit our Gallery page to see some of our projects and events!",
+  },
 ];
 
 function getBotReply(input: string): string {
@@ -96,9 +112,9 @@ function getBotReply(input: string): string {
     if (faq.triggers.some((t) => lower.includes(t))) return faq.answer;
   }
   if (/^(hi|hello|hey|salam|good|assalam)/i.test(lower)) {
-    return "Assalamualaikum! I'm YBot, your YNot Solutions assistant. How can I help you today?";
+    return "Hello! I'm YBot, your YNot Solutions assistant. How can I help you today?";
   }
-  return "I'm not sure about that yet! For detailed enquiries, please contact us at ynotsolutions.brn@gmail.com or call +673 7194637.";
+  return "I'm not sure about that yet! For detailed enquiries, please contact us at ynotsolutions.brn@gmail.com or call +673 7194637. You can also visit our Contact page.";
 }
 
 type Msg = { text: string; type: 'bot' | 'user' };
@@ -130,7 +146,7 @@ export default function FloatingActions() {
       setTimeout(() => {
         setMessages([
           {
-            text: "Assalamualaikum! I'm YBot. Ask me about our services, pricing, location, or anything else!",
+            text: "Hello! I'm YBot. Ask me about our services, pricing, location, or anything else!",
             type: 'bot',
           },
         ]);
