@@ -11,7 +11,7 @@ COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN npx next build
+RUN node ./node_modules/next/dist/bin/next build
 
 # ─── Stage 2: Production image ────────────────────────────────────────────────
 FROM node:20-alpine AS runner
